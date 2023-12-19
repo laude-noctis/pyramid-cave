@@ -5,7 +5,7 @@ const { Category, Product } = require('../../models');
 
 // find all categories
 // be sure to include its associated Products
-router.get('/', (req, res) => {
+router.get('/api/categories/', (req, res) => {
   Category.findAll({ include: Product }).then((categoryData) => {
     res.json(categoryData)
   })
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
 // find one category by its `id` value
 // be sure to include its associated Products
-router.get('/:id', (req, res) => {
+router.get('/api/categories/:id', (req, res) => {
   Category.findByPk(req.params.id, { include: Product }).then((categoryData) => {
     res.json(categoryData)
   })
@@ -26,7 +26,7 @@ router.get('/:id', (req, res) => {
 });
 
 // create a new category
-router.post('/', (req, res) => {
+router.post('/api/categories/', (req, res) => {
   Category.create(req.body)
     .then((newCategory) => {
       res.json(newCategory);
@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
 });
 
 // update a category by its `id` value
-router.put('/:id', (req, res) => {
+router.put('/api/categories/:id', (req, res) => {
   Category.update(
     {
       category_name: req.body.category_name,
@@ -57,7 +57,7 @@ router.put('/:id', (req, res) => {
 });
 
 // delete a category by its `id` value
-router.delete('/:id', (req, res) => {
+router.delete('/api/categories/:id', (req, res) => {
   Category.destroy({
     where: {
       id: req.params.id
