@@ -12,19 +12,21 @@ router.get('/', (req, res) => {
       { model: ProductTag },
     ]
   })
-  .then((tagData) => {
-    res.json(tagData)
-  })
-  .catch((err) => {
-    res.json(err)
-  })
+    .then((tagData) => {
+      res.json(tagData)
+    })
+    .catch((err) => {
+      res.json(err)
+    })
 });
 
 // find a single tag by its `id`
 // be sure to include its associated Product data
 router.get('/:id', (req, res) => {
   Tag.findAll({
-    include: [ Product ],
+    include: [
+      { model: Product }
+    ],
   })
     .then((tagData) => {
       console.log(tagData)
@@ -69,12 +71,12 @@ router.delete('/:id', (req, res) => {
       id: req.params.id
     }
   })
-  .then((deletedTag) => {
-    res.json(deletedTag)
-  })
-  .catch((err) => {
-    res.json(err)
-  })
+    .then((deletedTag) => {
+      res.json(deletedTag)
+    })
+    .catch((err) => {
+      res.json(err)
+    })
 });
 
 module.exports = router;

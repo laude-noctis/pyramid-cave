@@ -36,13 +36,13 @@ router.get('/:id', (req, res) => {
       { model: Tag }
     ]
   })
-  .then((productData) => {
-    res.json(productData)
-  })
-  .catch((err) => {
-    console.log(err);
-    res.status(500).json(err);
-  })
+    .then((productData) => {
+      res.json(productData)
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    })
 });
 
 // create new product
@@ -129,12 +129,12 @@ router.delete('/:id', (req, res) => {
       id: req.params.id
     }
   })
-  .then((deletedProduct) => {
-    res.json(deletedProduct)
-  })
-  .catch((err) => { 
-    res.json(err)
-  })
+    .then((deletedProduct) => {
+      res.json(deletedProduct)
+    })
+    .catch((err) => {
+      res.json(err)
+    })
 });
 
 module.exports = router;
