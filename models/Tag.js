@@ -2,7 +2,14 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection.js');
 
-class Tag extends Model {}
+class Tag extends Model {
+  static association(models) {
+    Tag.belongsToMany(Product, {
+      through: ProductTag,
+      foreignKey: 'tag_id',
+    });
+  }
+}
 
 Tag.init(
   {

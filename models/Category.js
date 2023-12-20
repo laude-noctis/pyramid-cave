@@ -3,7 +3,13 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
 const { INTEGER } = require('sequelize');
 
-class Category extends Model {}
+class Category extends Model {
+  static associate(models) {
+    this.hasMany(models.Product, {
+      foreignKey: 'category_id',
+    });
+  }
+}
 
 Category.init(
   {
