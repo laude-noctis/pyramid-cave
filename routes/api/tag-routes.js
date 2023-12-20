@@ -9,7 +9,6 @@ router.get('/', (req, res) => {
   Tag.findAll({
     include: [
       { model: Product },
-      { model: ProductTag },
     ]
   })
     .then((tagData) => {
@@ -23,19 +22,12 @@ router.get('/', (req, res) => {
 // find a single tag by its `id`
 // be sure to include its associated Product data
 router.get('/:id', (req, res) => {
-  Tag.findAll({
-    include: [
-      { model: Product }
-    ],
+  Tag.findByPk(req.params.id, { include: Product }).then((tagData) => {
+    res.json(tagData)
   })
-    .then((tagData) => {
-      console.log(tagData)
-      res.json(tagData);
-    })
     .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+      console.log(err)
+    })
 });
 
 // create a new tag
