@@ -14,7 +14,7 @@ Open insomnia and enter the correct URL and begin routing
 ## Features (NPMS)
 [mysql2](https://www.npmjs.com/package/mysql2)  
 [sequelize](https://www.npmjs.com/package/sequelize)  
-[dotenv](https://www.npmjs.com/package/dotenv)
+[dotenv](https://www.npmjs.com/package/dotenv)  
 [express](https://www.npmjs.com/package/express)
 
 ## Tutorial Video
